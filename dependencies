@@ -1,0 +1,10 @@
+* Extra depencies:
+
+** lock script
+   imagemagick - images manipulating
+   scort - screenshots
+
+** other
+
+   feh - image viewer, for background
+   xautolock - X session auto lock

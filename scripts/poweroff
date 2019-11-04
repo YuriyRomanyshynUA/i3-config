@@ -1,0 +1,36 @@
+
+
+# bindsym l exec $HOME/.config/i3/scripts/lock, mode "default"
+# # suspend
+# bindsym s exec $HOME/.config/i3/scripts/lock && systemctl suspend, mode "default"
+# # hibernate
+# bindsym h exec $HOME/.config/i3/scripts/lock && systemctl hibernate, mode "default"
+# # poweroff
+# bindsym e exec systemctl poweroff, mode "default"
+# # reboot
+# bindsym r exec systemctl reboot, mode "default"
+LIST="Lock\nReboot\nPoweroff\nSuspend\nHibernate"
+# ASK="echo -e $LIST | dmenu -nb \"#232b2b\" -l 10 -p \"Power off:\" -fn \"Ubuntu Mono pixelsize=20\""
+RESULT=$(echo $LIST | dmenu -nb "#232b2b" -l 10 -p "Power off:" -fn "Ubuntu Mono pixelsize=20")
+
+
+case $RESULT in
+    "Lock")
+	$HOME/.config/i3/scripts/lock
+	;;
+    "Reboot")
+	systemctl reboot
+	;;
+    "Poweroff")
+	systemctl poweroff
+	;;
+    "Suspend")
+	$HOME/.config/i3/scripts/lock && systemctl suspend
+	;;
+    "Hibernate")
+	$HOME/.config/i3/scripts/lock && systemctl hibernate
+	;;
+    *)
+    ;;
+esac
+

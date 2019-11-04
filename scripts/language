@@ -1,0 +1,5 @@
+
+
+RESULT=$(echo "us\nua" | dmenu -nb "#232b2b" -l 5 -p "Language:" -fn "Ubuntu Mono pixelsize=20")
+
+setxkbmap $RESULT
