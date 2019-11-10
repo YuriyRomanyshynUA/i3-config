@@ -20,6 +20,7 @@ time {
 battery_level {
     notification=True
     notify_low_level=True
+    blocks="\uf244\uf243\uf243\uf242\uf242\uf241\uf241\uf240"
     format="{icon} {percent}% {time_remaining}"
     hide_seconds=True
     cache_timeout=15
@@ -46,6 +47,8 @@ online_status {
 
 volume_status {
     cache_timeout=1
-    format="\u266a {percentage}"
+    blocks="\uf026\uf027\uf028"
+    format="\uf028 {percentage}"
+    format_muted="\uf026"
 }
 
