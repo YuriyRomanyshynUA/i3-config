@@ -10,8 +10,8 @@
 # # reboot
 # bindsym r exec systemctl reboot, mode "default"
 LIST="Lock\nReboot\nPoweroff\nSuspend\nHibernate"
-# ASK="echo -e $LIST | dmenu -nb \"#232b2b\" -l 10 -p \"Power off:\" -fn \"Ubuntu Mono pixelsize=20\""
-RESULT=$(echo $LIST | dmenu -nb "#232b2b" -l 10 -p "Power off:" -fn "Ubuntu Mono pixelsize=20")
+# ASK="echo -e $LIST | dmenu -sb \"#145214\" -nb \"#222222\" -l 10 -p \"Power off:\" -fn \"Ubuntu Mono pixelsize=20\""
+RESULT=$(echo $LIST | dmenu -l 10 -p "Power off:" -fn "Ubuntu Mono pixelsize=20" -sb '#145214' -nb '#222222')
 
 
 case $RESULT in

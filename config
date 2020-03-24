@@ -1,4 +1,12 @@
 set $mod Mod4
+set $color-primary        #145214
+set $color-secondary      #005580
+set $color-alert          #bd2c40
+set $color-warn           #ffb52a
+set $color-background     #222222
+set $color-background-alt #444444
+set $color-foreground     #dfdfdf
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -13,11 +21,23 @@ font pango:Ubuntu 11
 floating_modifier $mod
 focus_follows_mouse no
 
+
+# ===================================
+# color schema
+# ===================================
+# set some nice colors      border     background  text
+client.focused		    $color-primary	   $color-background	$color-foreground
+client.unfocused            $color-background      $color-background	$color-foreground
+client.focused_inactive     $color-background	   $color-background	$color-foreground
+client.urgent               $color-warn		   $color-background	$color-foreground
+hide_edge_borders both
+# ===================================
+
+
 # ===================================
 # startup
 # ===================================
 
-exec --no-startup-id polybar main -c ~/.config/i3/polybar-config
 exec --no-startup-id feh --bg-fill ~/.config/i3/static/wallpaper.jpg
 exec --no-startup-id polybar main
 # exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/scripts/lock
@@ -28,7 +48,7 @@ exec --no-startup-id firefox
 
 
 # ===================================
-# bindings
+# general bindings
 # ===================================
 
 # bindsym $mod+a exec --no-startup-id $HOME/.config/i3/scripts/language
@@ -43,8 +63,18 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run -nb "#232b2b" -l 10 -p "Select app:" -fn 'Ubuntu Mono pixelsize=20'
+bindsym $mod+d exec dmenu_run -nb "#232b2b" -l 10 -p "Run:" -fn 'Ubuntu Mono pixelsize=20' -sb '#145214' -nb '#222222'
 
+# reload the configuration file
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+bindsym $mod+s exec --no-startup-id $HOME/.config/i3/scripts/poweroff
 # ===================================
 
 
@@ -145,13 +175,6 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 # ===================================
 
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -199,7 +222,6 @@ bindsym $mod+r mode "resize"
 
 # bindsym $mod+s mode "system"
 
-bindsym $mod+s exec --no-startup-id $HOME/.config/i3/scripts/poweroff
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
