@@ -1,0 +1,17 @@
+
+
+
+FOLDER="/home/yura/Documents/books/";
+cd $FOLDER;
+LIST=$(find . -name "*.pdf" -o -name "*.djvu" -o -name "*.epub");
+RESULT=$(echo "$LIST" | dmenu -l 10 -p "Books:" -fn "Ubuntu Mono pixelsize=20" -sb '#145214' -nb '#222222');
+
+# echo $RESULT;
+
+test -z $RESULT && echo "Empty query" || evince $RESULT;
+
+
+
+
+
+
